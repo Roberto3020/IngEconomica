@@ -1,0 +1,145 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido a mi página</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        /* Estilos generales */
+        * {
+            box-sizing: content-box;
+            margin: 0; /*Cambiar margen*/
+            padding: 0;
+        }
+ 
+        body {
+            font-family: 'Century Gothic', sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            background-color: #f5f5f5;
+            color: #000066;
+            height: 400px;
+            background-size: cover;
+            background-position: center center;
+        }
+
+        video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            background-color: rgba(0,0,0,8);
+        }
+
+        a:visited, a:focus { /* Focus: Color al seleccionar opción - Visited: Color al visitar*/
+            background: #edf2f7;
+        }
+
+        a:hover { /*Color al pasar el cursor por encima*/
+            background: #edf2f7;
+        }
+
+        a:active {
+            background: #e6f7ff;
+            color: white;
+        }
+
+        /* Estilos para encabezado */
+        header {
+            color: #142952;
+            background: #142952;
+            text-align: center;
+            padding:0;
+
+        }
+
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px #000;
+            border-radius: 15px;
+            background-color: #142952;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Estilos para contenido principal */
+
+        main  {
+            margin: 30px auto;
+            max-width: 700px;
+            text-align: justify;
+            padding: 20px;
+            box-shadow: 0 0 10px black;
+            border-radius: 15px;
+            background: white;   
+        }
+        
+            main button {
+                display: block;
+                margin: 0 auto;
+            }
+
+        p {
+            margin-bottom: 10px;     
+        }
+
+        /* Estilos para botón */
+        button {
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin-bottom: 30px;
+            transition: background-color 0.3s ease-in-out;
+            box-shadow: 0 5px #660000;
+        }
+
+            button:hover {
+                background-color: #ff8080;
+            }
+
+        /* Estilos para pie de página */
+        footer {
+            background-color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        p2 {
+            font-size: 0.8em;
+        }
+ 
+    </style>
+</head>
+<body>
+    <video autoplay muted>
+        <source src="https://media.istockphoto.com/id/1041379854/es/v%C3%ADdeo/estad%C3%ADsticas-datos-de-mercados-financieros-an%C3%A1lisis-e-informes-n%C3%BAmeros-y-gr%C3%A1ficos.mp4?s=mp4-640x640-is&k=20&c=BX0BSkPc38c2pO8BgYLrFs4U3gLImtEpnPFZcYYtDSE=" type="video/mp4">
+    </video>
+
+    <h1>¡¡Bienvenido a <img src="https://cdn-icons-png.flaticon.com/512/301/301047.png?w=996&t=st=1681528870~exp=1681529470~hmac=ec27c1f93935f3dd2afa2b87b2ce51d369451edb0e8b8eaef8d6e39eb53ac1c3" class="img2" alt="UPC.Matrix.Portal.Web" width="55" height="55"><text class="text">Economy!!</text></h1>
+
+    <main>
+        <p>¡Hola! Somos desarrolladores web y quieremos facilitarte algunos temas. Aquí encontrarás información y soluciones a problemas y más. ¡Disfruta tu visita!</p>
+        <button onclick="window.location.href='@Url.Action("Index", "TemaTodos")'">Comenzar</button>
+    </main>
+
+    <p2>Derechos de autor © 2023. Todos los derechos reservados.</p2>
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,28 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+
+}
+
+/*MIS CAMBIOS*/
+
+.img, .text-img { /*Alinear imagen con texto*/
+    float: left;
+    margin-inline: 0; /*Separación entre imagen y texto*/
+}
+
+
