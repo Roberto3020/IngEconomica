@@ -131,7 +131,7 @@
 
                 if (isNaN(F)) {
                     var resultado = document.getElementById("F");
-                    resultado.value = (P * (1 + i)^n).toFixed(3);
+                    resultado.value = (P * (1 + i)**n).toFixed(3);
                     document.getElementById("variable").innerHTML = "Calular Valor Futuro"
                     document.getElementById("formula").innerHTML = "F = P * (1 + i)^n"
                     var formula = `F = ${P} (1+${i})^${n}`;
@@ -141,7 +141,7 @@
 
                 } else if (isNaN(P)) {
                     var resultado = document.getElementById("P");
-                    resultado.value = (F / (1 + i)^2).toFixed(3);
+                    resultado.value = (F / (1 + i)**2).toFixed(3);
                     document.getElementById("variable").innerHTML = "Calular Valor Prensente"
                     document.getElementById("formula").innerHTML = "P = F / (1 + i)^2"
                     var formula = `P = ${F}/(1+${i})^${n}`;
@@ -149,7 +149,7 @@
                     document.getElementById("resultado").innerHTML = 'P = ' + resultado.value
                 } else if (isNaN(i)) {
                     var resultado = document.getElementById("i");
-                    resultado.value = ((F / P) ^ (1 / n) - 1);
+                    resultado.value = ((F / P) ** (1 / n) - 1);
                     document.getElementById("variable").innerHTML = "Calular Tasa de interes"
                     document.getElementById("formula").innerHTML = "i = ((F / P) ^ (1 / n)) - 1"
                     var formula = `i = ((${F}/${P})^1/${n}-1)`;
@@ -157,7 +157,7 @@
                     document.getElementById("resultado").innerHTML = 'i = ' + resultado.value
                 } else if (isNaN(n)) {
                     var resultado = document.getElementById("n");
-                    resultado.value = (Math.log(F / P) / Math.log(1 + i)).toFixed(3);
+                    resultado.value = ((Math.log(F / P)) / (Math.log(1 + i))).toFixed(3);
                     document.getElementById("variable").innerHTML = "Calular periodo"
                     document.getElementById("formula").innerHTML = "n = Log(F / P) / Log(1 + i)"
                     var formula = `n = Log(${F}/${P})/Log(1+${i})`;
