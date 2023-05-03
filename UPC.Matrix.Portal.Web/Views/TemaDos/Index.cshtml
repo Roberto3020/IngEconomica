@@ -99,19 +99,75 @@
                     <input id="P" class="p-3" type="text" placeholder="P" />
                     <br />
                     <label>Interes</label>
-                    <input id="I" class="p-3" type="text" placeholder="I" />
+                    <input id="I" class="p-3" type="text" placeholder="I" disabled/>
                     <br />
                     <label>Taza de Interes</label>
                     <input id="i" class="p-3" type="text" placeholder="i" />
                     <br />
                     <label>Numero de Periodos</label>
                     <input id="n" class="p-3" type="text" placeholder="n" />
+                    <br />
+                    <input class="p-3" value="Calcular" type="button" onclick="calcular()" />
                 </div>
 
             </form>
-            <canvas style="width: 500px; height:500px; background: gray; margin: auto;">
-            </canvas>
+            <div style="display: flex; flex-direction:column; text-align: center; width: 500px; height:500px; background: gray; margin: auto; color:azure">
+                <label id="variable" style="padding-top:20px"> </label>
+                <br />
+                <label id="formula" style="padding-top:20px"> </label>
+                <br />
+                <label id="reemplazo" style="padding-top:20px"> </label>
+                <label id="resultado" style="padding-top:20px"> </label>
+            </div>
         </div>
+        <script>
+            function calcular() {
+                var F = parseFloat(document.getElementById("F").value);
+                var P = parseFloat(document.getElementById("P").value);
+                var i = parseFloat(document.getElementById("i").value);
+                var n = parseFloat(document.getElementById("n").value);
+
+                var I = document.getElementById("I");
+
+                if (isNaN(F)) {
+                    var resultado = document.getElementById("F");
+                    resultado.value = (P * (1 + i)^n).toFixed(3);
+                    document.getElementById("variable").innerHTML = "Calular Valor Futuro"
+                    document.getElementById("formula").innerHTML = "F = P * (1 + i)^n"
+                    var formula = `F = ${P} (1+${i})^${n}`;
+                    document.getElementById("reemplazo").innerHTML = formula;
+                    document.getElementById("resultado").innerHTML = 'F = ' + resultado.value
+
+
+                } else if (isNaN(P)) {
+                    var resultado = document.getElementById("P");
+                    resultado.value = (F / (1 + i)^2).toFixed(3);
+                    document.getElementById("variable").innerHTML = "Calular Valor Prensente"
+                    document.getElementById("formula").innerHTML = "P = F / (1 + i)^2"
+                    var formula = `P = ${F}/(1+${i})^${n}`;
+                    document.getElementById("reemplazo").innerHTML = formula;
+                    document.getElementById("resultado").innerHTML = 'P = ' + resultado.value
+                } else if (isNaN(i)) {
+                    var resultado = document.getElementById("i");
+                    resultado.value = ((F / P) ^ (1 / n) - 1);
+                    document.getElementById("variable").innerHTML = "Calular Tasa de interes"
+                    document.getElementById("formula").innerHTML = "i = ((F / P) ^ (1 / n)) - 1"
+                    var formula = `i = ((${F}/${P})^1/${n}-1)`;
+                    document.getElementById("reemplazo").innerHTML = formula;
+                    document.getElementById("resultado").innerHTML = 'i = ' + resultado.value
+                } else if (isNaN(n)) {
+                    var resultado = document.getElementById("n");
+                    resultado.value = (Math.log(F / P) / Math.log(1 + i)).toFixed(3);
+                    document.getElementById("variable").innerHTML = "Calular periodo"
+                    document.getElementById("formula").innerHTML = "n = Log(F / P) / Log(1 + i)"
+                    var formula = `n = Log(${F}/${P})/Log(1+${i})`;
+                    document.getElementById("reemplazo").innerHTML = formula;
+                    document.getElementById("resultado").innerHTML = 'n = ' + resultado.value
+                }
+                I = F - P
+            }
+
+        </script>
         <button style="display: block; margin: auto; padding: 10px; text-align: center;" onclick="window.location.href='@Url.Action("Index", "TemaTodos")'" type="button">
             <img src="https://cdn-icons-png.flaticon.com/512/4495/4495678.png" height="50" width="50" />
         </button>
