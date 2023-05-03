@@ -149,7 +149,7 @@
                     document.getElementById("resultado").innerHTML = 'P = ' + resultado.value
                 } else if (isNaN(i)) {
                     var resultado = document.getElementById("i");
-                    resultado.value = ((F / P) ** (1 / n) - 1);
+                    resultado.value = ((F / P) ** (1 / n) - 1).toFixed(3);
                     document.getElementById("variable").innerHTML = "Calular Tasa de interes"
                     document.getElementById("formula").innerHTML = "i = ((F / P) ^ (1 / n)) - 1"
                     var formula = `i = ((${F}/${P})^1/${n}-1)`;
