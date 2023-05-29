@@ -83,14 +83,198 @@
             footer p {
                 font-size: 0.8em;
             }
+        /* Estilos para campos de entrada */
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        /* Estilos para el botón "Calcular" */
+        input[type="button"] {
+            background-color: #000066;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 2em;
+            padding: 20px 40px;
+            margin: 20px 0;
+            transition: background-color 0.3s ease-in-out;
+            box-shadow: 0 5px #4d4dff;
+        }
+
+            input[type="button"]:hover {
+                background-color: #3333ff;
+            }
+        /* Estilos para los select */
+        select {
+            width: min-content;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            height: fit-content;
+        }
+
+
+        /* Estilos para la tabla de amortización */
+        .amortization-table {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            width: 500px;
+            height: 400px;
+            background: gray;
+            margin: auto;
+            color: azure;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
     <div>
-        <h2>TEMA 3</h2>
-        <button style="display: block; margin: auto; padding: 10px; text-align: center;" onclick="window.location.href='@Url.Action("Index", "TemaTodos")'" type="button">
-            <img src="https://cdn-icons-png.flaticon.com/512/4495/4495678.png" height="50" width="50" />
+        <h2>Amortizacion</h2>
+        <div style="display: flex; width:100%; justify-items: center; justify-content:center">
+            <form class="col" style="width:45%">
+                <div style="display:flex; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          font-size:20px; flex-direction:column; width:250px">
+                    <label>Monto del préstamo (P):</label>
+                    <input id="monto-prestamo" class="p-2" style="margin-bottom:15px" type="number"
+                           placeholder="Monto del préstamo" required>
+
+                    <label>Tasa de interés (i):</label>
+                    <div style="flex-direction:row; display:inline-flex">
+                        <input id="tasa-interes" class="p-2" style="margin-bottom:15px" type="number"
+                               placeholder="Tasa de interés" required>
+                        <select id="unidad-tasa-interes" name="unidad-tasa-interes">
+                            <option value="dia">Día</option>
+                            <option value="mes" selected>Mes</option>
+                            <option value="anio">Año</option>
+                        </select>
+                    </div>
+
+                    <label>Plazo del préstamo (n):</label>
+                    <div style="flex-direction:row; display:inline-flex">
+                        <input id="plazo-prestamo" class="p-2" style="margin-bottom:25px" type="number"
+                               placeholder="Plazo del préstamo" required>
+                        <select id="unidad-plazo" name="unidad-plazo">
+                            <option value="dia">Día</option>
+                            <option value="mes" selected>Mes</option>
+                            <option value="anio">Año</option>
+                        </select>
+                    </div>
+                    <input class="p-1" value="Calcular" type="button" onclick="calcularAmortizacion()">
+                </div>
+            </form>
+            <div style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size:20px; display: flex; flex-direction:column; text-align: center; width: 600px; height:400px; background: gray; margin: auto; color:azure" class="tabla-amortizacion">
+                <div id="tabla-amortizacion" style="width: 100%; height: 100%; overflow: auto;"></div>
+            </div>
+            <script>
+                function calcularAmortizacion() {
+                    var montoPrestamo = parseFloat(document.getElementById('monto-prestamo').value);
+                    var tasaInteres = parseFloat(document.getElementById('tasa-interes').value);
+                    var unidadTasaInteres = document.getElementById('unidad-tasa-interes').value;
+                    var plazoPrestamo = parseInt(document.getElementById('plazo-prestamo').value);
+                    var unidadPlazo = document.getElementById('unidad-plazo').value;
+
+                    // Conversión de unidades de tiempo si son diferentes
+                    var convertedInterestRate = tasaInteres; // Variable para almacenar la tasa de interés convertida
+                    var conversionMessage = ''; // Variable para almacenar el mensaje de conversión
+
+                    if (unidadTasaInteres === 'dia' && unidadPlazo === 'mes') {
+                        convertedInterestRate *= 30; // Conversión de días a meses
+                        conversionMessage = 'La tasa de interés actual es: ' + (tasaInteres * 100) + '% mensual. Se ha convertido a: ' + (convertedInterestRate * 100) + '% mensual.';
+                    } else if (unidadTasaInteres === 'dia' && unidadPlazo === 'anio') {
+                        convertedInterestRate *= 365; // Conversión de días a años
+                        conversionMessage = 'La tasa de interés actual es: ' + (tasaInteres * 100) + '% mensual. Se ha convertido a: ' + (convertedInterestRate * 100) + '% anual.';
+                    } else if (unidadTasaInteres === 'mes' && unidadPlazo === 'dia') {
+                        convertedInterestRate /= 30; // Conversión de meses a días
+                        conversionMessage = 'La tasa de interés actual es: ' + (tasaInteres * 100) + '% mensual. Se ha convertido a: ' + (convertedInterestRate * 100) + '% diario.';
+                    } else if (unidadTasaInteres === 'mes' && unidadPlazo === 'anio') {
+                        convertedInterestRate *= 12; // Conversión de meses a años
+                        conversionMessage = 'La tasa de interés actual es: ' + (tasaInteres * 100) + '% mensual. Se ha convertido a: ' + (convertedInterestRate * 100) + '% anual.';
+                    } else if (unidadTasaInteres === 'anio' && unidadPlazo === 'dia') {
+                        convertedInterestRate /= 365; // Conversión de años a días
+                        conversionMessage = 'La tasa de interés actual es: ' + (tasaInteres * 100) + '% anual. Se ha convertido a: ' + (convertedInterestRate * 100) + '% diario.';
+                    } else if (unidadTasaInteres === 'anio' && unidadPlazo === 'mes') {
+                        convertedInterestRate /= 12; // Conversión de años a meses
+                        conversionMessage = 'La tasa de interés actual es: ' + (tasaInteres * 100) + '% anual. Se ha convertido a: ' + (convertedInterestRate * 100) + '% mensual.';
+                    }
+
+
+                    var tablaAmortizacion = document.getElementById('tabla-amortizacion');
+                    tablaAmortizacion.innerHTML = '';
+
+                    if (conversionMessage !== '') {
+                        var conversionMessageElement = document.createElement('p');
+                        conversionMessageElement.textContent = conversionMessage;
+                        tablaAmortizacion.appendChild(conversionMessageElement);
+                    }
+
+
+                    var tabla = document.createElement('table');
+                    tabla.style.width = '100%'; // Establece el ancho de la tabla al 100%
+                    tabla.style.border = '1px solid white'; // Establece el borde blanco de la tabla
+                    tabla.innerHTML = '<tr><th>Periodo</th><th>Cuota</th><th>Interés</th><th>Amortización</th><th>Saldo</th></tr>';
+
+                    var saldoPendiente = montoPrestamo;
+                    var tasaInteresMensual = convertedInterestRate;
+                    var pagoMensual = calcularPagoMensual(montoPrestamo, tasaInteresMensual, plazoPrestamo);
+
+                    var filaInicial = tabla.insertRow();
+                    filaInicial.insertCell().textContent = '0';
+                    filaInicial.insertCell().textContent = '-';
+                    filaInicial.insertCell().textContent = '-';
+                    filaInicial.insertCell().textContent = '-';
+                    filaInicial.insertCell().textContent = montoPrestamo.toFixed(2);
+
+                    for (var j = 1; j <= plazoPrestamo; j++) {
+                        var interes = saldoPendiente * tasaInteresMensual;
+                        var principal = pagoMensual - interes;
+                        var nuevoSaldo = saldoPendiente - principal;
+
+                        var fila = tabla.insertRow();
+                        fila.insertCell().textContent = j;
+                        fila.insertCell().textContent = pagoMensual.toFixed(2);
+                        fila.insertCell().textContent = interes.toFixed(2);
+                        fila.insertCell().textContent = principal.toFixed(2);
+                        fila.insertCell().textContent = nuevoSaldo.toFixed(2);
+
+                        saldoPendiente = nuevoSaldo;
+                    }
+
+                    tablaAmortizacion.appendChild(tabla);
+                }
+
+                function calcularPagoMensual(montoPrestamo, tasaInteresMensual, plazoPrestamo) {
+                    var exponente = Math.pow(1 + tasaInteresMensual, plazoPrestamo);
+                    return (montoPrestamo * tasaInteresMensual * exponente) / (exponente - 1);
+                }
+            </script>
+
+        </div>
+
+        <button style="display: block; margin-bottom: 20px; margin-top:20px; padding: 0px 15px;; text-align: center;" onclick="window.location.href='@Url.Action("Index", "TemaTodos")'" type="button">
+            <img src="https://cdn-icons-png.flaticon.com/512/507/507257.png" height="19" width="29" />
         </button>
+
     </div>
+
 </body>
+
 </html>
+
