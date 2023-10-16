@@ -16,8 +16,13 @@
             font-family: Arial, sans-serif;
             font-size: 16px;
             line-height: 1.5;
-            background-color: #e6f9ff;
+            background-color: white;
             color: #333;
+            background-image: url('https://i.pinimg.com/1200x/2c/66/17/2c6617a046fa71cdbbe8c316e9153317.jpg');
+            background-repeat: no-repeat;
+            background-size: 500px;
+            background-position-y: 8rem;
+            background-position-x: 40%
         }
 
         a:visited, a:focus { /* Focus: Color al seleccionar opción - Visited: Color al visitar*/
@@ -102,8 +107,8 @@
 
         /* Estilos para el botón "Calcular" */
         input[type="button"] {
-            background-color: #000066;
-            color: #fff;
+            background-color: #74F1EC;
+            color: black;
             border: none;
             border-radius: 10px;
             cursor: pointer;
@@ -115,7 +120,7 @@
         }
 
             input[type="button"]:hover {
-                background-color: #3333ff;
+                background-color: #FBCDD2;
             }
     </style>
 </head>
@@ -142,7 +147,7 @@
                 </div>
 
             </form>
-            <div style="display: flex; flex-direction:column; text-align: center; width: 500px; height:400px; background: gray; margin: auto; color:azure; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            <div style="display: flex; flex-direction:column; text-align: center; width: 500px; height:400px; background: aliceblue; margin: auto; color:black; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
                         font-size:20px;">
                 <br />
 
@@ -177,7 +182,7 @@
 
                 } else if (isNaN(P)) {
                     var resultado = document.getElementById("P");
-                    resultado.value = (F / (1 + i)**2).toFixed(3);
+                    resultado.value = (F / (1 + i)**(n/365)).toFixed(3);
                     document.getElementById("variable").innerHTML = "Calular Valor Prensente"
                     document.getElementById("formula").innerHTML = "P = F / (1 + i)^2"
                     var formula = `P = ${F}/(1+${i})^${n}`;
@@ -203,9 +208,9 @@
             }
 
         </script>
-        <button style="display: block; margin-bottom: 20px; margin-top:20px; padding: 0px 15px;; text-align: center;" onclick="window.location.href='@Url.Action("Index", "TemaTodos")'" type="button">
+@*         <button style="display: block; margin-bottom: 20px; margin-top:20px; padding: 0px 15px;; text-align: center;" onclick="window.location.href='@Url.Action("Index", "TemaTodos")'" type="button">
             <img src="https://cdn-icons-png.flaticon.com/512/507/507257.png" height="19" width="29" />
-        </button>
+        </button> *@
     </div>
 </body>
 </html>

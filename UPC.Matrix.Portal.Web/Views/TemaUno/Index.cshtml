@@ -16,10 +16,17 @@
             font-family: Arial, sans-serif;
             font-size: 16px;
             line-height: 1.5;
-            background-color: #e6f9ff;
+             background-color: transparent;
             color: #333;
+            background-image: url('https://img.freepik.com/vector-gratis/diseno-etiqueta-calculadora-aislada_1308-60994.jpg?w=2000') ;
+            background-repeat:no-repeat;
+            background-size:500px;
+            background-position-y:8rem;
+            background-position-x:40%
+            
+            
         }
-
+        
         a:visited, a:focus { /* Focus: Color al seleccionar opción - Visited: Color al visitar*/
             background: #edf2f7;
         }
@@ -90,6 +97,7 @@
             border-radius: 5px;
             font-size: 16px;
             margin-bottom: 15px;
+            margin-top:20px
         }
 
         input[type="number"] {
@@ -102,8 +110,8 @@
 
         /* Estilos para el botón "Calcular" */
         input[type="button"] {
-            background-color: #000066;
-            color: #fff;
+            background-color: #74F1EC;
+            color: black;
             border: none;
             border-radius: 10px;
             cursor: pointer;
@@ -115,7 +123,7 @@
         }
 
             input[type="button"]:hover {
-                background-color: #3333ff;
+                background-color: #FBCDD2;
             }
     </style>
 </head>
@@ -144,7 +152,7 @@
 
             </form>
             <div style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-                        font-size:20px; display: flex; flex-direction:column; text-align: center; width: 500px; height:400px; background: gray; margin: auto; color:azure">
+                        font-size:20px; display: flex; flex-direction:column; text-align: center; width: 500px; height:400px; background: aliceblue; margin: auto; color:black">
             <br />    
             <label id="variable" style="padding-top:20px"> </label>
                 <br />
@@ -166,36 +174,34 @@
                 
                     if (isNaN(F)) {
                         var resultado = document.getElementById("F");
-                        resultado.value = (P * (1 + i * n)).toFixed(3);
+                        resultado.value = (P * ( (i / 100) * (n / 366))).toFixed(2);
                         document.getElementById("variable").innerHTML = "Calular Valor Futuro"
-                        document.getElementById("formula").innerHTML = "F = P * (1 + i * n)"
-                        var formula = 'F = ' + P + ' * (1 + '+i+' * '+n+')';
+                        document.getElementById("formula").innerHTML = "F = P * (1+  i * n/ 365)"
+                        var formula = 'F = ' + P + ' * (1 + ' + i / 100 + ' * ' + n / 365 + ')';
                         document.getElementById("reemplazo").innerHTML = formula;
                         document.getElementById("resultado").innerHTML = 'F = ' + resultado.value
-
-
                     } else if (isNaN(P)) {
                         var resultado = document.getElementById("P");
-                        resultado.value = (F / (1 + n * i)).toFixed(3);
+                        resultado.value = (F / ((i / 100) * ( n / 365))).toFixed(2);
                         document.getElementById("variable").innerHTML = "Calular Valor Prensente"
-                        document.getElementById("formula").innerHTML = "P = F / (1 + n * i)"
-                        var formula = 'P = ' + F + ' / (1 + ' + i + ' * ' + n + ')';
+                        document.getElementById("formula").innerHTML = "P = F / (i * t )"
+                        var formula = 'P = ' + F + ' / (' + i + ' * ' + n + ')';
                         document.getElementById("reemplazo").innerHTML = formula;
                         document.getElementById("resultado").innerHTML = 'P = ' + resultado.value
                     } else if (isNaN(i)) {
                         var resultado = document.getElementById("i");
-                        resultado.value = (1 / n * ((F / P) - 1)).toFixed(3);
+                        resultado.value = (F / (P * (n / 365))).toFixed(2);
                         document.getElementById("variable").innerHTML = "Calular Tasa de interes"
-                        document.getElementById("formula").innerHTML = "i = 1 / n * ((F / P) -1 )"
-                        var formula = 'i = 1 /'+n+'* (('+F+'/' + P + ') -1 )';
+                        document.getElementById("formula").innerHTML = "i =  F / ((P * ( n / 365))"
+                        var formula = 'i = '+F+'* (('+P+'*' + n / 365 + ')  )';
                         document.getElementById("reemplazo").innerHTML = formula;
                         document.getElementById("resultado").innerHTML = 'i = ' + resultado.value
                     } else if (isNaN(n)) {
                         var resultado = document.getElementById("n");
-                        resultado.value = (1 / i * ((F / P) - 1)).toFixed(3);
+                        resultado.value = (F / (P * (i / 100))).toFixed(2);
                         document.getElementById("variable").innerHTML = "Calular periodo"
-                        document.getElementById("formula").innerHTML = "n = 1 / i * ((F / P) -1 )"
-                        var formula = 'n = 1 /' + i + '* ((' + F + '/' + P + ') -1 )';
+                        document.getElementById("formula").innerHTML = "n =  F / ((P * i)  )"
+                        var formula = 'n = ' + F + '/((' + P + '*' + i + ') )';
                         document.getElementById("reemplazo").innerHTML = formula;
                         document.getElementById("resultado").innerHTML = 'n = ' + resultado.value
                     }
@@ -206,9 +212,9 @@
 
             
         </div>
-        <button style="display: block; margin-bottom: 20px; margin-top:20px; padding: 0px 15px;; text-align: center;" onclick="window.location.href='@Url.Action("Index", "TemaTodos")'" type="button">
+@*         <button style="display: block; margin-bottom: 20px; margin-top:20px; padding: 0px 15px;; text-align: center;" onclick="window.location.href='@Url.Action("Index", "TemaTodos")'" type="button">
             <img src="https://cdn-icons-png.flaticon.com/512/507/507257.png" height="19" width="29" />
-        </button>
+        </button> *@
         
     </div>
 </body>

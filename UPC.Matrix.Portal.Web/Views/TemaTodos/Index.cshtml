@@ -87,7 +87,7 @@
             text-align: center;
             text-shadow: #142952 1px 0 10px;
             color: #FFFFFF;
-            background-color: #ff0000;
+            background-color: darkblue;
             padding: 10px 40px;
         }
 
@@ -120,27 +120,27 @@
     </video>
     <main>
         <section id="problem-selection">
-            <h2>Selecciona el Tipo de Problema</h2>
+            <h2>Hola!, Selecciona la opcion que desea utilizar </h2>
             <div>
                 <button style="width:350px" onclick="window.location.href='@Url.Action("Index", "TemaUno")'">Interes Simple</button>
-                <text class="textoProblema">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</text>
-                <br>
+                @* <text class="textoProblema">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</text>
+                 <br*@
                 <button style="width:350px" onclick="window.location.href='@Url.Action("Index", "TemaDos")'">Interes Compuesto</button>
-                <text class="textoProblema">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</text>
-                <br>
+                    @* <text class="textoProblema">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</text>*@
+@*                 <br>
                 <button style="width:350px" onclick="window.location.href='@Url.Action("Index", "TemaTres")'">Tazas de Interes</button>
                 <text class="textoProblema">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</text>
                 <br>
                 <button style="width:350px" onclick="window.location.href='@Url.Action("Index", "TemaCuatro")'">Anualidades</button>
                 <text class="textoProblema">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</text>
-                <br>
+                <br> *@
             </div>
         </section>
     </main>
     <div>
-        <button class="volver" style="display: block; margin: auto; padding: 10px; text-align: center;" onclick="window.location.href='@Url.Action("Index", "Home")'" type="button">
+@*         <button class="volver" style="display: block; margin: auto; padding: 10px; text-align: center;" onclick="window.location.href='@Url.Action("Index", "Home")'" type="button">
             <img src="https://cdn-icons-png.flaticon.com/512/4495/4495678.png" height="50" width="50" />
-        </button>
+        </button> *@
     </div>
        
   
